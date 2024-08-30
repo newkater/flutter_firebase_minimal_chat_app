@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_minimal_chat_app/auth/login_or_register.dart';
 import 'package:flutter_firebase_minimal_chat_app/themes/light_mode.dart';
-
-import 'pages/login_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: LoginOrRegister(),
       theme: lightMode,
     );
   }
