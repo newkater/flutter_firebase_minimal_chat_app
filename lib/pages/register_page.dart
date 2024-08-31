@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_minimal_chat_app/auth/auth_service.dart';
+import 'package:flutter_firebase_minimal_chat_app/services/auth/auth_service.dart';
 import 'package:flutter_firebase_minimal_chat_app/components/my_button.dart';
 import 'package:flutter_firebase_minimal_chat_app/components/my_textfield.dart';
 
@@ -17,11 +17,11 @@ class RegisterPage extends StatelessWidget {
   // register method
   void register(BuildContext context) {
     // get auth service
-    final _authService = AuthService();
+    final authService = AuthService();
 
     if (_passwordController.text == _confirmPasswordController.text) {
       try {
-        _authService.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
+        authService.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
       }
       catch (e) {
         showDialog(
