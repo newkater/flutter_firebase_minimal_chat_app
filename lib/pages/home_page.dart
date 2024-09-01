@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_minimal_chat_app/components/my_drawer.dart';
 import 'package:flutter_firebase_minimal_chat_app/components/user_tile.dart';
@@ -50,17 +51,22 @@ class HomePage extends StatelessWidget {
   // build individual list tile for user'
   Widget _buildUserListItem(Map<String, dynamic> userData, BuildContext context) {
     // display all users except for the current user
-    return UserTile(
-      text: userData["email"],
-      onTap: () {
-        // tap on user --> go to chat page
-        Navigator.push(
-          context, 
-          MaterialPageRoute(
-            builder: (context) => ChatPage(receiverEmail: userData["email"],),
-          )
-        );
-      },
-    );
+    if (userData["email"] != _authService.getCurrentUser()!.email) {
+      return UserTile(
+        text: userData["email"],
+        onTap: () {
+          // tap on user --> go to chat page
+          Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (context) => ChatPage(receiverEmail: userData["email"],),
+            )
+          );
+        },
+      );
+    }
+    else {
+      return Container();
+    }
   }
 }
