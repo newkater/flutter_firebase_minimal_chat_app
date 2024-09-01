@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_minimal_chat_app/components/my_drawer.dart';
 import 'package:flutter_firebase_minimal_chat_app/components/user_tile.dart';
@@ -59,7 +58,7 @@ class HomePage extends StatelessWidget {
           Navigator.push(
             context, 
             MaterialPageRoute(
-              builder: (context) => ChatPage(receiverEmail: userData["email"],),
+              builder: (context) => ChatPage(receiverEmail: userData["email"], receiverID: userData["uid"],),
             )
           );
         },
